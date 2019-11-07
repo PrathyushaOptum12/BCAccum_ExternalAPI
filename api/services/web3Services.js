@@ -5,7 +5,7 @@ const jsonFile = path.resolve(__dirname,"./../abis/Accums.json");
 const parsed= JSON.parse(fs.readFileSync(jsonFile));
 const abi = parsed.abi; // gets the Web3 object, which is a function constructor
 var web3 = new Web3(); // instantiate Web3 to get a new object
-web3 = new Web3(new Web3.providers.WebsocketProvider("wss://accumdev.blockchain.azure.com:3300/ajkJzpNwg0SihtLDBc1dFTQC"));
+web3 = new Web3(new Web3.providers.HttpProvider("https://accumdev.blockchain.azure.com:3200/ajkJzpNwg0SihtLDBc1dFTQC"));
 const contract = new web3.eth.Contract(abi,"0xc6cD14dD03C4FD88fa12ef473894aa113d565858");
 
 const address = "0x3115B113c11Be2140996B4AA690CC0c6010C9D7a"

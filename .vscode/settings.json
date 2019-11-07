@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/929a5cb9-cb52-47e1-a556-70d48aa9885e/resourceGroups/api-resource-group/providers/Microsoft.Web/sites/ExternalAPI-Azure-web-app",
+    "appService.defaultWebAppToDeploy": "/subscriptions/929a5cb9-cb52-47e1-a556-70d48aa9885e/resourceGroups/api-resource-group/providers/Microsoft.Web/sites/ExternalAPI-BC-Azure-web-app",
     "appService.deploySubpath": ""
 }
