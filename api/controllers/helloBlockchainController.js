@@ -1,7 +1,7 @@
 var fs = require('fs');
 
- //var jsonFile = "/home/site/wwwroot/api/abis/HelloBlockchain.json";
- var jsonFile = "C:/Users/pkorrap2/Repos/Examples/HelloNodeJsAPI/api/abis/HelloBlockchain.json";
+ var jsonFile = "/home/site/wwwroot/api/abis/HelloBlockchain.json";
+ //var jsonFile = "C:/Users/pkorrap2/Repos/Examples/HelloNodeJsAPI/api/abis/HelloBlockchain.json";
 var parsed= JSON.parse(fs.readFileSync(jsonFile));
 var abi = parsed.abi;
 var Web3 = require('web3'); // gets the Web3 object, which is a function constructor
