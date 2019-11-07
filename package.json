@@ -4,7 +4,6 @@
   "description": "Parity Blockchain with Node js and Kafka",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
     "start": "node server.js"
   },
   "keywords": [
