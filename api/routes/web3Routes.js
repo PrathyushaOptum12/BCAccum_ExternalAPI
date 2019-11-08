@@ -3,10 +3,10 @@ module.exports = function(app) {
     var web3Routes = require('../controllers/web3Controller');
 
     //Helloworld Routes
-    app.route('accum/addNewMember')
+    app.route('/accum/addNewMember')
     .post(web3Routes.addNewMember);
 
-    app.route('accum/addtoAccum')
+    app.route('/accum/addtoAccum')
     .post(web3Routes.addtoAccum);
 
     app.route('/accum/find')
