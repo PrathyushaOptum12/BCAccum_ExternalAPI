@@ -12,12 +12,12 @@ module.exports = function(app) {
     app.route('/accum/find')
     .get(web3Routes.findMember);
 
-    var helloWorld = require('../controllers/helloBlockchainController');
+    var helloBlockchain = require('../controllers/helloBlockchainController');
 
-    //Helloworld Routes
+    //HelloBlockchain Routes
     app.route('/getMessage')
-    .get(helloWorld.read_Message);
+    .get(helloBlockchain.read_Message);
 
-    app.route('/getHello')
-    .get(helloWorld.read_Hello);
+    app.route('/sendMessage')
+    .post(helloBlockchain.send_Message);
 }

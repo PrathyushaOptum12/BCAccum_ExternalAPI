@@ -24,8 +24,28 @@ exports.read_Message = function(req, res) {
     
     helloBlockchainContract.methods.getMessage().call((err, result) => 
      { 
+        
          console.log(result);
         res.send(result);
+         });
+
+         console.log("after calling smart contract");
+};
+
+exports.send_Message = function(req, res) {
+
+    console.log("before calling smart contract");
+    
+    
+    helloBlockchainContract.methods.SendRequest(req.body).call((err, result) => 
+     { 
+
+        if(err)
+    {
+        Console.log("unknown error is ", err);
+    }
+         console.log(result.tx);
+        res.send(result.tx);
          });
 
          console.log("after calling smart contract");

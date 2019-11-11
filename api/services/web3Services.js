@@ -8,7 +8,7 @@ var web3 = new Web3(); // instantiate Web3 to get a new object
 web3 = new Web3(new Web3.providers.HttpProvider("https://accumdev.blockchain.azure.com:3200/ajkJzpNwg0SihtLDBc1dFTQC"));
 const contract = new web3.eth.Contract(abi,"0xc6cD14dD03C4FD88fa12ef473894aa113d565858");
 
-const address = "0x3115B113c11Be2140996B4AA690CC0c6010C9D7a"
+//const address = "0x3115B113c11Be2140996B4AA690CC0c6010C9D7a"
 
 // const SignerProvider = require('ethjs-provider-signer');
 // const sign = require('ethjs-signer').sign;
@@ -110,10 +110,9 @@ async function addNewMember(member_sha_hash,first_name, last_name, dob,patient_i
     console.log(">>>>>>>>>>>>>",member_sha_hash,first_name, last_name, dob,patient_id,member_id,accum_start_date,accum_end_date)
     return new Promise((resolve, reject)=>{
         contract.methods.setUuidNew(member_sha_hash,first_name, last_name, dob,patient_id,member_id,accum_start_date,accum_end_date)
-        .send({
-            from: address
-        })
+        
         .on('transactionHash', function(hash) {
+            console.log(hash);
             resolve(hash)
         })
         .on('confirmation', function(confirmationNumber, receipt) {
@@ -126,7 +125,7 @@ async function addNewMember(member_sha_hash,first_name, last_name, dob,patient_i
             reject("Error",error);
         });
     }).catch(function(error){
-        console.log("Error We Got in Blockchain Transaction is ",error)
+        console.log("Error We Got in Blockchain Transaction is ",error.Message)
     })
 }
 
