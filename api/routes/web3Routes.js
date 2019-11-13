@@ -27,6 +27,6 @@ module.exports = function(app) {
     app.route('/getName')
     .get(nameControllerObj.get_name);
 
-    app.route('/sendName')
+    app.route('/setName')
     .post(nameControllerObj.send_name);
 }

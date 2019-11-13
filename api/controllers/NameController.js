@@ -34,7 +34,7 @@ exports.get_name = function(req, res) {
          console.log("after calling get method smart contract");
 };
 
-exports.send_name = function(req, res) {
+exports.set_name = function(req, res) {
 
     console.log("before calling set method smart contract");
     
