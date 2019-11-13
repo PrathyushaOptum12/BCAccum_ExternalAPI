@@ -4,5 +4,5 @@
         ".vscode{,/**}"
     ],
     "appService.deploySubpath": "",
-    "appService.defaultWebAppToDeploy": "/subscriptions/929a5cb9-cb52-47e1-a556-70d48aa9885e/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/BCAccumulator-ExternalAPI"
+    "appService.defaultWebAppToDeploy": "/subscriptions/929a5cb9-cb52-47e1-a556-70d48aa9885e/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/testNameContractAPI"
 }

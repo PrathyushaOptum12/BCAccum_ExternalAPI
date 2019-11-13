@@ -20,4 +20,13 @@ module.exports = function(app) {
 
     app.route('/sendMessage')
     .post(helloBlockchain.send_Message);
+
+
+    var nameControllerObj = require('../controllers/nameController');
+    //name contract
+    app.route('/getName')
+    .get(nameControllerObj.get_name);
+
+    app.route('/sendName')
+    .post(nameControllerObj.send_name);
 }
