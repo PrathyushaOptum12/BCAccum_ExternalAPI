@@ -17,7 +17,8 @@ var web3 = new Web3(); // instantiate Web3 to get a new object
 //azure
 web3 = new Web3(new Web3.providers.HttpProvider("https://accumdev.blockchain.azure.com:3200/tDkJ9wCAAbIvUQgDsoevdabu"));
 const nameContract = new web3.eth.Contract(abi,"0x62092Ec2cb682B07E9BD5Ad428ff2D0aB870b91b");
-const address = "0x3115B113c11Be2140996B4AA690CC0c6010C9D7a"
+const address = "0x64218B699F47DB358CfD52e308Cac8D22E568681"
+//const address = "0x3115B113c11Be2140996B4AA690CC0c6010C9D7a"
 
 
 exports.get_name = function(req, res) {

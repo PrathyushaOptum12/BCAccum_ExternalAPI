@@ -74,11 +74,21 @@ exports.addtoAccum = async function(req,res){
 })
 };
 
-exports.findMember = async function(req,res){
+exports.findMember =  function(req,res){
     let membersha = _.get(req.query,"memberSha");
   console.log("TCL: membersha", membersha)
-  let result = await web3Service.findMember(membersha);
-  if (!result)
-    return respHandler("Error Cannot find member from user", req, res, null);
-  return respHandler(null, req, res, result);
+  try{
+  let findMemberpromise =  web3Service.findMember(membersha);
+
+  findMemberpromise.then(
+    function(result){
+    return respHandler(null, req, res, result)
+    },
+    function(err){
+     respHandler("Error Cannot find member from user", req, res, null)
+    });  
+  }
+  catch(err){
+    console.error(err);
+  }
 }
