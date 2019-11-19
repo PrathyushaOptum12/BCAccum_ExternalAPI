@@ -11,7 +11,6 @@ exports.addNewMember = async function(req,res){
     if(err) console.log("Error in Parsing Result",err);
     console.log("Result is ",result);
     let newMember = result.CHADJDCL_GEN_AREA;
-    //console.log("TCL: newMember", newMember)
     console.log("TCL: newMember", newMember)
     let first_name = newMember.CHDR_INSD_FST_NM;
     let last_name = newMember.CHDR_INSD_LST_NM;
@@ -32,12 +31,22 @@ exports.addNewMember = async function(req,res){
     console.log("TCL: member_sha_hash", member_sha_hash)
 
     console.log("fn, ln,dob, pid,mid,asd,aed,sha", first_name, last_name, dob,patient_id,member_id,accum_start_date,accum_end_date, member_sha_hash);
+    
     let result_final = await web3Service.addNewMember(member_sha_hash,first_name[0], last_name[0], dob,patient_id[0],member_id[0],accum_start_date,accum_end_date);
-    if (!result_final)
-      return respHandler("Error in fetching response", req, res, null);
+    if (!result_final) return respHandler("Error in getting result", req, res, null);
     return respHandler(null, req, res, result_final);
-})
-};
+    // let addMemberPromise = web3Service.addNewMember(member_sha_hash,first_name[0], last_name[0], dob,patient_id[0],member_id[0],accum_start_date,accum_end_date);
+    // addMemberPromise.then(
+    //   hash=> {
+    //     return respHandler(null, req, res, hash);
+    //   },
+    //   error=> {
+    //     console.log("Error we got in Blockchain is", error);
+    //     return respHandler("Error in fetching response", req, res, null);
+    //   }
+    //   );
+});
+}
 
 exports.addtoAccum = async function(req,res){
     let data = req.body.member;
@@ -45,9 +54,6 @@ exports.addtoAccum = async function(req,res){
     parseString(data, async function(err,result){
     if(err) console.log("Error in Parsing Result",err);
     console.log("Result is ",result);
-    // let jsonData = parser.toJson(result);
-    // console.log('DAta sis ',jsonData);
-    // data = JSON.parse(jsonData);
     let accumObj = result.CHADJDCL_GEN_AREA;;
     console.log("TCL: accumObj", accumObj)
     let inAmt = accumObj.CHDR_ACCUM_IND_APPLIED;
@@ -76,19 +82,13 @@ exports.addtoAccum = async function(req,res){
 
 exports.findMember =  function(req,res){
     let membersha = _.get(req.query,"memberSha");
-  console.log("TCL: membersha", membersha)
-  try{
-  let findMemberpromise =  web3Service.findMember(membersha);
-
-  findMemberpromise.then(
-    function(result){
-    return respHandler(null, req, res, result)
-    },
-    function(err){
-     respHandler("Error Cannot find member from user", req, res, null)
-    });  
+    console.log("TCL: membersha", membersha)
+  
+    let findMemberpromise =  web3Service.findMember(membersha);
+    findMemberpromise.then(
+      result => { return respHandler(null, req, res, result) },
+      err => { 
+        console.log(err);
+        return respHandler("Error Cannot find member from user", req, res, null)}
+    ); 
   }
-  catch(err){
-    console.error(err);
-  }
-}

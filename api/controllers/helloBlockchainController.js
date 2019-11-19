@@ -1,6 +1,6 @@
 var fs = require('fs');
-
- var jsonFile = "/home/site/wwwroot/api/abis/HelloBlockchain.json";
+const path = require("path");
+ var jsonFile = path.resolve(__dirname,"./../abis/HelloBlockchain.json");
  //var jsonFile = "C:/Users/pkorrap2/Repos/Examples/HelloNodeJsAPI/api/abis/HelloBlockchain.json";
 var parsed= JSON.parse(fs.readFileSync(jsonFile));
 var abi = parsed.abi;
