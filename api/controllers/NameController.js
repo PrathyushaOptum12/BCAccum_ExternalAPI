@@ -1,9 +1,9 @@
 var fs = require('fs');
-
+const path = require("path");
 
  //local
 //var jsonFile = "C:/Users/pkorrap2/Repos/Examples/Parity_ExternalAPI/api/abis/NameContract.json";
-var jsonFile = "/home/site/wwwroot/api/abis/NameContract.json";
+var jsonFile = path.resolve(__dirname,"./../abis/NameContract.json");
 var parsed= JSON.parse(fs.readFileSync(jsonFile));
 var abi = parsed.abi;
 var Web3 = require('web3'); // gets the Web3 object, which is a function constructor
